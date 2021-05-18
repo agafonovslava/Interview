@@ -1,5 +1,4 @@
 // #3 : https://leetcode.com/problems/longest-substring-without-repeating-characters/
-
 /********************************************************************************** 
 * Given a string, find the length of the longest substring without repeating characters.
 * Examples:
@@ -29,6 +28,7 @@ s consists of English letters, digits, symbols and spaces.
 **********************************************************************************/
 using System;
 using System.Collections.Generic;
+
 namespace Algorithms
 {
     public class Solution003

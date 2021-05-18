@@ -20,7 +20,9 @@ The number of nodes in each linked list is in the range [1, 100].
 0 <= Node.val <= 9
 It is guaranteed that the list represents a number that does not have leading zeros.
 **********************************************************************************/
+
 using Algorithms.Utils;
+
 namespace Algorithms
 {
     public class Solution002
@@ -38,10 +40,21 @@ namespace Algorithms
                 carry = digit / 10;
                 current.Next = new ListNode<int>(digit % 10);
                 current = current.Next;
-                if (l1 != null) { l1 = l1.Next; }
-                if (l2 != null) { l2 = l2.Next; }
+                if (l1 != null)
+                {
+                    l1 = l1.Next;
+                }
+                if (l2 != null)
+                {
+                    l2 = l2.Next;
+                }
             }
-            if (carry > 0) { current.Next = new ListNode<int>(carry); }
+
+            if (carry > 0)
+            {
+                current.Next = new ListNode<int>(carry);
+            }
+
             return head.Next;
         }
 

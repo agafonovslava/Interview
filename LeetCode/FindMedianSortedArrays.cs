@@ -45,6 +45,7 @@ namespace Algorithms
         {
             int[] arr = new int[nums1.Length + nums2.Length];
             int i = 0, j = 0, k = 0;
+
             while (i < nums1.Length && j < nums2.Length)
             {
                 if (nums1[i] < nums2[j])
@@ -59,20 +60,24 @@ namespace Algorithms
                 }
                 k++;
             }
+
             while (i < nums1.Length)
             {
                 arr[k] = nums1[i];
                 k++;
                 i++;
             }
+
             while (j < nums2.Length)
             {
                 arr[k] = nums2[j];
                 k++;
                 j++;
             }
+
             return GetArrayMedian(arr);
         }
+
         private static double GetArrayMedian(int[] arr)
         {
             int len = arr.Length;

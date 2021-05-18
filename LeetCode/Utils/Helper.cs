@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+
 namespace Algorithms.Utils
 {
     public static class Helper
@@ -20,10 +21,12 @@ namespace Algorithms.Utils
             }
             throw new Exception("input is not a valid List");
         }
+
         public static TreeNode ToTreeNode(this int?[] arr)
         {
             return ToTreeNode(arr, 0, arr.Length);
         }
+
         private static TreeNode ToTreeNode(int?[] arr, int i, int n)
         {
             if (i >= n || arr[i] == null) return null;
@@ -34,6 +37,7 @@ namespace Algorithms.Utils
             };
             return tn;
         }
+
         public static List<int> ToList(this ListNode<int> node)
         {
             var lst = new List<int>();
@@ -69,7 +73,7 @@ namespace Algorithms.Utils
                 {
                     if (nums[j] > nums[j + 1])
                     {
-                        pos = j;//记录交换的位置
+                        pos = j;
                         int tmp = nums[j];
                         nums[j] = nums[j + 1];
                         nums[j + 1] = tmp;

@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+
 namespace Algorithms.Utils
 {
     public static class SortExtensions

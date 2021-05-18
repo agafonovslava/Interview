@@ -28,9 +28,11 @@ Constraints:
 The number of nodes in the tree is in the range [0, 2000].
 -1000 <= Node.val <= 1000
 **********************************************************************************/
+
 using Algorithms.Utils;
 using System.Collections;
 using System.Collections.Generic;
+
 namespace Algorithms
 {
     public class Solution107
@@ -56,7 +58,7 @@ namespace Algorithms
                 }
                 res.Add(lvl);
             }
-            return (IList<IList<int>>)res;
+            return res;
         }
     }
 }
