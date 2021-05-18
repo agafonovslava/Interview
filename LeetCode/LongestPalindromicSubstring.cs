@@ -1,10 +1,26 @@
-// Source : https://leetcode.com/problems/longest-palindromic-substring/
+// #5 : https://leetcode.com/problems/longest-palindromic-substring/
 
 /*************************************************************************************** 
  *
  * Given a string S, find the longest palindromic substring in S. You may assume that 
  * the maximum length of S is 1000, and there exists one unique longest palindromic 
  * substring.
+Example 1:
+Input: s = "babad"
+Output: "bab"
+Note: "aba" is also a valid answer.
+Example 2:
+Input: s = "cbbd"
+Output: "bb"
+Example 3:
+Input: s = "a"
+Output: "a"
+Example 4:
+Input: s = "ac"
+Output: "a"
+Constraints:
+1 <= s.length <= 1000
+s consist of only digits and English letters (lower-case and/or upper-case),
  ***************************************************************************************/
 namespace Algorithms
 {
