@@ -19,6 +19,7 @@
 //output = nopqrstuvwxyzABCDEFGHIJKLM9012345678
 
 using System;
+using System.Collections.Generic;
 using System.Text;
 
 // We don’t provide test cases in this language yet, but have outlined the signature for you. Please write your code below, and don’t forget to
@@ -32,14 +33,7 @@ public class SolutionFacebook
             char ch = input[i];
             if (char.IsNumber(ch))
             {
-                if (ch + rotationFactor > '9')
-                {
-                    ch = ((int.Parse(ch.ToString()) + rotationFactor) % 10).ToString().ToCharArray()[0];
-                }
-                else
-                {
-                    ch = (char)(ch + rotationFactor);
-                }
+                ch = (char)((ch + rotationFactor - 48) % 10 + 48);
             }
             else if (!char.IsLetter(ch))
             {
@@ -57,5 +51,65 @@ public class SolutionFacebook
             sb.Append(ch);
         }
         return sb.ToString();
+    }
+
+    /// <summary>
+    /// Contiguous Subarrays
+    /// You are given an array arr of N integers.For each index i, you are required to determine the number of contiguous subarrays that fulfill the following conditions:
+    /// The value at index i must be the maximum element in the contiguous subarrays, and
+    /// These contiguous subarrays must either start from or end on index i.
+    /// Signature
+    /// int[] countSubarrays(int[] arr)
+    /// Input
+    /// Array arr is a non-empty list of unique integers that range between 1 to 1,000,000,000
+    /// Size N is between 1 and 1,000,000
+    /// Output
+    /// An array where each index i contains an integer denoting the maximum number of contiguous subarrays of arr[i]
+    /// Example:
+    /// arr = [3, 4, 1, 6, 2]
+    /// output = [1, 3, 1, 5, 1]
+    /// Explanation:
+    /// For index 0 - [3] is the only contiguous subarray that starts(or ends) with 3, and the maximum value in this subarray is 3.
+    /// For index 1 - [4], [3, 4], [4, 1]
+    /// For index 2 - [1]
+    /// For index 3 - [6], [6, 2], [1, 6], [4, 1, 6], [3, 4, 1, 6]
+    /// For index 4 - [2]
+    /// So, the answer for the above input is [1, 3, 1, 5, 1]
+    /// </summary>
+    /// <param name="arr"></param>
+    /// <returns>O(N) time | O(N) space</returns>
+    public static int[] countSubarrays(int[] arr)
+    {
+        Stack<int> stack = new Stack<int>();
+        int[] ans = new int[arr.Length];
+        //left
+        for (int i = 0; i < arr.Length; i++)
+        {
+            while (stack.Count != 0 &&
+                  arr[stack.Peek()] < arr[i])
+            {
+                ans[i] += ans[stack.Pop()];
+            }
+            stack.Push(i);
+            ans[i]++;
+        }
+        stack.Clear();
+
+        int[] temp = new int[arr.Length];
+        //right
+        for (int i = arr.Length - 1; i >= 0; i--)
+        {
+            while (stack.Count != 0 &&
+                  arr[stack.Peek()] < arr[i])
+            {
+                int idx = stack.Pop();
+                ans[i] += temp[idx];
+                temp[i] += temp[idx];
+            }
+            stack.Push(i);
+            temp[i]++;
+        }
+
+        return ans;
     }
 }
