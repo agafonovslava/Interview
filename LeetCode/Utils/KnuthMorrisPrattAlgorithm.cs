@@ -15,10 +15,18 @@ namespace Algorithms.Utils
     /// Instead of having to restart our comparisons at the second character of the main string,
     /// however, we notice that the substring "ab", which is at the beginning of our potential
     /// substring, just appeared near our point of failure in the main string. 
+    /// 
+    /// Start by traversing the potential substring and building out a pattern table.
+    /// This 1-dimensional array should store for every position in the substring, the last
+    /// index at which a matching pattern has been seen; more specifically, 
+    /// this index should be the ending index of a prefix in the substring that is also a suffix
+    /// at the given position. For example, the string "abcababcd" should yield the following table
+    /// [-1, -1, -1, 0, 1, 0 , 1, 2, -1]
     /// </summary>
     public class KMP
     {
-        //O(n + m) time | O(m) space 
+        //O(n + m) time | O(m) space where n is length of the main string
+        //and m is the length of the potential substring 
         public static bool KnuthMorrisPrattAlgorithm(string str, string substring)
         {
             int[] pattern = buildPattern(substring);
